@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河豚历险记</title>
+    <!-- 添加社交媒体预览信息 -->
+    <meta property="og:title" content="河豚历险记">
+    <meta property="og:description" content="一个可爱的水下冒险游戏，快来和河豚一起探险吧！">
+    <meta property="og:image" content="https://你的用户名.github.io/puffer-fish-game/preview.png">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+        }
+        canvas {
+            border: 2px solid #ffffff;
+            margin-bottom: 20px;
+        }
+        .share-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .share-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4ba3c3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .share-button:hover {
+            background-color: #3d8aa6;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="320" height="480"></canvas>
+    <div class="share-buttons">
+        <button class="share-button" onclick="shareToWeChat()">分享到微信</button>
+        <button class="share-button" onclick="shareToWeibo()">分享到微博</button>
+        <button class="share-button" onclick="copyLink()">复制链接</button>
+    </div>
+    <script src="game.js"></script>
+    <script>
+        function shareToWeChat() {
+            // 生成二维码或提示在微信中打开
+            alert('请使用微信扫描二维码分享');
+        }
+        
+        function shareToWeibo() {
+            const text = '我在玩河豚历险记，超好玩的！快来挑战我的分数吧！';
+            const url = encodeURIComponent(window.location.href);
+            window.open(`http://service.weibo.com/share/share.php?url=${url}&title=${encodeURIComponent(text)}`);
+        }
+        
+        function copyLink() {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('链接已复制到剪贴板！');
+        }
+    </script>
+</body>
+</html> 
